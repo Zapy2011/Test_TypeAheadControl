@@ -1,0 +1,20 @@
+<div class="form-group">
+  <label for="adjusterTypeahead">Select Adjuster:</label>
+  <input
+    id="adjusterTypeahead"
+    type="text"
+    class="form-control"
+    [(ngModel)]="adjusterModel"
+    [ngbTypeahead]="searchAdjuster"
+    [resultFormatter]="adjusterFormatter"
+    [inputFormatter]="adjusterFormatter"
+    (selectItem)="onAdjusterSelect($event)"
+    (keyup.enter)="onAdjusterEnter($event)"
+    placeholder="Type to search..."
+  />
+</div>
+<div *ngIf="selectedAdjuster" class="mt-2">
+  <strong>Selected Adjuster:</strong>
+  {{ selectedAdjuster.name }} (ID: {{ selectedAdjuster.id }})
+</div>
+<div class="text-danger mt-2">Warning: {{ warning }}</div>
